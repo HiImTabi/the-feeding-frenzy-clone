@@ -25,11 +25,11 @@ float fishWidth;  // variable size of fish
 float fishHeight;
 int fishType; // Fish is facing right if 1, left if 2
 
-int order = 0;  // Pages (0 = start page, 1 =  
+int order = 0;  // Pages (0 = start page, 1 = game, 2 = settings, 3 = game over, 4 = instructions)
 int conPage = 0; // game over screen
 int difficulty = 1;  // difficulty of game
 String Difficulty;
-int clickNumber = 0;  //mouse operation times in start page and setting page
+int clickNumber = 0;  // Mouse operation times in start page and setting page
 
 int score = 0;
 int[] scoreSize = new int[11];
@@ -40,28 +40,28 @@ int level = 1;
 float Xlocation;
 float Ylocation;
 
-//big fish - change fish amount
-float[] Xbig1 = new float[2];  //shark1
-float[] Ybig1 = new float[2];
-float[] Xbig2 = new float[7];  //shark2
-float[] Ybig2 = new float[7];
+// Sharks - change fish amount
+float[] Xbig1 = new float[1];  // shark1 (GOOD BRUCE)
+float[] Ybig1 = new float[1];
+float[] Xbig2 = new float[4];  // shark2 (EVIL BRUCE)
+float[] Ybig2 = new float[4];
 
 //small fish - change fish amount
-float[] Xsmall = new float[4];  //Sfish
+float[] Xsmall = new float[4];  // Sfish (SMALL & EDIBLE)
 float[] Ysmall = new float[4];
-float[] Xsmall1 = new float[3];  //big1-2
+float[] Xsmall1 = new float[3];  // big1-2 (YELLOW FISH)
 float[] Ysmall1 = new float[3];
-float[] Xsmall2 = new float[3];  //big3-4
+float[] Xsmall2 = new float[3];  // big3-4 (ANGLERS)
 float[] Ysmall2 = new float[3];
 
 //images
 PImage background;
 PImage background1;
 PImage intro;
-PImage fish;  //original player fish
-PImage fish1;  //original player fish - turn left
-PImage fish2;  //death fish
-PImage fish3;  //death fish - turn left
+PImage fish;  // original player fish
+PImage fish1;  // original player fish - turn left
+PImage fish2;  // death fish
+PImage fish3;  // death fish - turn left
 
 PImage shark;
 PImage shark1;
@@ -83,9 +83,7 @@ int pauseNumber = 0;
 int pauseType;
 void setup() {
   size(888, 666);
-  //Fonts
   myFont = createFont("font.ttf", 50);
-
   textFont(myFont);
   wwid = width*0.0125;
   hhei = height*0.01667;

@@ -1,0 +1,27 @@
+big1,2 = small1 = yellow fish
+big3,4 = small2 = angler
+
+levels
+0 = 0
+1 = 100
+2 = 600
+3 = 1500
+4 = 2800
+5 = 4500
+6 = 6600
+7 = 9100
+8 = 12000
+9 = 15300
+10 = 19000
+
+yellow fish at level 5
+angler at level 7
+shark at level 9
+
+order:
+0 = start menu
+1 = game
+2 = settings
+3 = game over
+4 = instructions
+
