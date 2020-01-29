@@ -59,7 +59,7 @@ void drawOriginalFish() {
       if (level < 5 || level > 10) {
         image(fish, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level < 7) {
-        image(big2, Xlocation, Ylocation, fishWidth, fishHeight);
+        image(Evil, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level < 9) {
         image(big4, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level <= 10) {
@@ -78,7 +78,7 @@ void drawOriginalFish() {
       if (level < 5 || level > 10) {
         image(fish1, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level < 7) {
-        image(big1, Xlocation, Ylocation, fishWidth, fishHeight);
+        image(Good, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level < 9) {
         image(big3, Xlocation, Ylocation, fishWidth, fishHeight);
       } else if (level <= 10) {
@@ -95,7 +95,7 @@ void drawOriginalFish() {
           if (level < 5 || level > 10) {
             image(fish, Xlocation, Ylocation, fishWidth, fishHeight);
           } else if (level < 7) {
-            image(big2, Xlocation, Ylocation, fishWidth, fishHeight);
+            image(Evil, Xlocation, Ylocation, fishWidth, fishHeight);
           } else if (level < 9) {
             image(big4, Xlocation, Ylocation, fishWidth, fishHeight);
           } else if (level <= 10) {
@@ -109,7 +109,7 @@ void drawOriginalFish() {
             if (level < 5 || level > 10) {
           image(fish1, Xlocation, Ylocation, fishWidth, fishHeight);
         } else if (level < 7) {
-          image(big1, Xlocation, Ylocation, fishWidth, fishHeight);
+          image(Good, Xlocation, Ylocation, fishWidth, fishHeight);
         } else if (level < 9) {
           image(big3, Xlocation, Ylocation, fishWidth, fishHeight);
         } else if (level <= 10) {

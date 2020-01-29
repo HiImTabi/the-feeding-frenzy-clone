@@ -36,23 +36,23 @@ int[] scoreSize = new int[11];
 float percentage;
 int level = 1;
 
-//variables of random bigger or smaller fish moving location
+//variables of random bigger or Smaller fish moving location
 float Xlocation;
 float Ylocation;
 
 // Sharks - change fish amount
-float[] Xbig1 = new float[1];  // shark1 (GOOD BRUCE)
-float[] Ybig1 = new float[1];
-float[] Xbig2 = new float[4];  // shark2 (EVIL BRUCE)
-float[] Ybig2 = new float[4];
+float[] XGood = new float[1];  // shark1 (GOOD BRUCE)
+float[] YGood = new float[1];
+float[] XEvil = new float[4];  // shark2 (EVIL BRUCE)
+float[] YEvil = new float[4];
 
-//small fish - change fish amount
-float[] Xsmall = new float[4];  // Sfish (SMALL & EDIBLE)
-float[] Ysmall = new float[4];
-float[] Xsmall1 = new float[3];  // big1-2 (YELLOW FISH)
-float[] Ysmall1 = new float[3];
-float[] Xsmall2 = new float[3];  // big3-4 (ANGLERS)
-float[] Ysmall2 = new float[3];
+//Small fish - change fish amount
+float[] XSmall = new float[4];  // Sfish (Small & EDIBLE)
+float[] YSmall = new float[4];
+float[] XYellow = new float[3];  // Good-2 (Yellow FISH)
+float[] YYellow = new float[3];
+float[] XAngler = new float[3];  // big3-4 (AnglerS)
+float[] YAngler = new float[3];
 
 //images
 PImage background;
@@ -72,8 +72,8 @@ PImage shark4;
 PImage Sfish;
 PImage Sfish1;
 
-PImage big1;
-PImage big2;
+PImage Good;
+PImage Evil;
 PImage big3;
 PImage big4;
 
@@ -82,7 +82,7 @@ PFont myFont;  //Font
 int pauseNumber = 0;
 int pauseType;
 void setup() {
-  size(888, 666);
+  size(800, 600);
   myFont = createFont("font.ttf", 50);
   textFont(myFont);
   wwid = width*0.0125;
@@ -97,30 +97,30 @@ void setup() {
     println(scoreSize[i]);
   }
 
-  //big fish moving initialisation
-  for (int i = 0; i < Xbig1.length; i++) {
-    Xbig1[i] = width+random(wwid*5*i, hhei*10*i);
-    Ybig1[i] = random(fishHeight*1.5, height-hhei*12);
+  // Big fish starting position
+  for (int i = 0; i < XGood.length; i++) {
+    XGood[i] = width+random(wwid*5*i, hhei*10*i);
+    YGood[i] = random(fishHeight*1.5, height-hhei*12);
   }
-  for (int i = 0; i < Xbig2.length; i++) {
-    Xbig2[i] = width+random(wwid*5*i, hhei*10*i);
-    Ybig2[i] = random(fishHeight*1.5, height-hhei*12);
-  }
-
-  //small fish moving initialisation
-  for (int i = 0; i < Xsmall.length; i++) {
-    Xsmall[i] = width+random(wwid*5*i, wwid*6*i);
-    Ysmall[i] = random(fishHeight*1.5, height-hhei*2.25);
+  for (int i = 0; i < XEvil.length; i++) {
+    XEvil[i] = width+random(wwid*5*i, hhei*10*i);
+    YEvil[i] = random(fishHeight*1.5, height-hhei*12);
   }
 
-  for (int i = 0; i < Xsmall1.length; i++) {
-    Xsmall1[i] = width+random(wwid*2*i, wwid*4*i);
-    Ysmall1[i] = random(fishHeight*1.5, height-hhei*6);
+  // Small fish starting position
+  for (int i = 0; i < XSmall.length; i++) {
+    XSmall[i] = width+random(wwid*5*i, wwid*6*i);
+    YSmall[i] = random(fishHeight*1.5, height-hhei*2.25);
   }
 
-  for (int i = 0; i < Xsmall2.length; i++) {
-    Xsmall2[i] = width+random(wwid*5*i, wwid*6*i);
-    Ysmall2[i] = random(fishHeight*1.5, height-hhei*10);
+  for (int i = 0; i < XYellow.length; i++) {
+    XYellow[i] = width+random(wwid*2*i, wwid*4*i);
+    YYellow[i] = random(fishHeight*1.5, height-hhei*6);
+  }
+
+  for (int i = 0; i < XAngler.length; i++) {
+    XAngler[i] = width+random(wwid*5*i, wwid*6*i);
+    YAngler[i] = random(fishHeight*1.5, height-hhei*10);
   }
 
   background = loadImage("background.png");
@@ -132,8 +132,8 @@ void setup() {
   fish2 = loadImage("fish2.png");
   fish3 = loadImage("fish3.png");
 
-  big1 = loadImage("fish9.png");
-  big2 = loadImage("fish10.png");
+  Good = loadImage("fish9.png");
+  Evil = loadImage("fish10.png");
 
   big3 = loadImage("fish11.png");
   big4 = loadImage("fish12.png");
@@ -156,12 +156,11 @@ void draw() {
   addScore();
   death();
   if (score >= 19000) {
-    success();  //congratulation page
+    success();  // congratulation page
   }
 
-  //testing! - need to be deleted
+  // HITBOX OF PLAYER  - NEEDS TO BE DELETED AFTER TESTING
   stroke(0);
-  //original fish size
   line(mouseX, Ylocation, mouseX, Ylocation+fishHeight);
   line(Xlocation, mouseY, Xlocation+fishWidth, mouseY);
 }
@@ -177,8 +176,8 @@ void changePage() {
     image(background1, 0, 0, width, height);
     statusBar();
     drawBig();
-    drawSmall1();
-    drawSmall2();
+    drawYellow();
+    drawAngler();
     drawSmall3();
     drawOriginalFish();
   } else if (order == 2) {  //setting page
@@ -379,7 +378,7 @@ void statusBar() {
   triangle(wwid*33, fishHeight*1.1, wwid*33-wwid*0.2, fishHeight*1.3, wwid*33+wwid*0.2, fishHeight*1.3);
   image(Sfish1, wwid*33, fishHeight*0.455, wwid*2.25, hhei*1.65);
   triangle(wwid*33+wwid*31*4500/19000, fishHeight*1.1, wwid*33+wwid*31*4500/19000-wwid*0.2, fishHeight*1.3, wwid*33+wwid*31*4500/19000+wwid*0.2, fishHeight*1.3);
-  image(big2, wwid*33+wwid*31*4500/19000, fishHeight*0.42, wwid*3, hhei*1.8);
+  image(Evil, wwid*33+wwid*31*4500/19000, fishHeight*0.42, wwid*3, hhei*1.8);
   triangle(wwid*33+wwid*31*9100/19000, fishHeight*1.1, wwid*33+wwid*31*9100/19000-wwid*0.2, fishHeight*1.3, wwid*33+wwid*31*9100/19000+wwid*0.2, fishHeight*1.3);
   image(big4, wwid*33+wwid*31*9100/19000, fishHeight*0.37, wwid*3, hhei*2.3);
   triangle(wwid*33+wwid*31*15300/19000, fishHeight*1.1, wwid*33+wwid*31*15300/19000-wwid*0.2, fishHeight*1.3, wwid*33+wwid*31*15300/19000+wwid*0.2, fishHeight*1.3);
