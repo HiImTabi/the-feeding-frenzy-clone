@@ -1,5 +1,5 @@
-# the-feeding-frenzy-clone (WORK IN PROGRESS)
-A little Feeding Frenzy clone I made with other students in my first programming course at university.
+# Feeding Frenzy Clone (WORK IN PROGRESS)
+A little Feeding Frenzy clone I made with other students in my first programming course at university using Processing.
 
 ## To be completed:
 * Fix movement of sharks
