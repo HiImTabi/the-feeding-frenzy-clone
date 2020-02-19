@@ -1,13 +1,7 @@
-# Feeding Frenzy Clone (WORK IN PROGRESS)
-A little Feeding Frenzy clone I made with other students in my first programming course at university using Processing.
+# Feeding Frenzy Clone (MOSTLY COMPLETE)
+A little Feeding Frenzy clone I made with other students in my first programming course at university using Processing. Incredibly simplistic. Certainly not as DEEP (pun intended) as the original Feeding Frenzy, but functional to kill a few minutes of time if you're really bored.
 
-## To be completed:
-* Fix movement of sharks
-* Fix scoring system
+## To-do list
 * Add reasonable progression to player
   * Should player be able to eat all fish at and/or below their level?
 * Fix bug where difficulty restarts after losing in 'HARD' difficulty
-* Fix number of sharks and fish
-* Fix sizes of all fish
-  * Should player be **smaller**?
-  * Should fish be **smaller**?
